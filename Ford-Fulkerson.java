@@ -1,4 +1,4 @@
-## Ford-Fulkerson 코드 구현
+## Ford-Fulkerson 코드 구현 
 
 ```java
 public static int capacity[][];
@@ -55,5 +55,4 @@ public static int capacity[][];
         }
         return total;
     }
-
 ```
