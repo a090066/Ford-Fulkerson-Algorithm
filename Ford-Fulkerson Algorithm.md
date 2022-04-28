@@ -119,21 +119,11 @@ public static int capacity[][];
 
 ① A->B->C->D 경로 탐색 <br/>
 ② 역간선을 이용하여 A->C->B->D 경로 탐색 <br/>
-③ 최대 유량 문제 해결을 위해 위 그래프에서 2000번의 탐색 수행<br/>
+③ 최대 유량 문제 해결을 위해 위 그래프에서 1000번의 루프 발생<br/>
 
-### 성능 분석
-* DFS의 기본 시간 복잡도는 *O(V+E)*이다.
-* s부터 t까지 가는 증가 경로를 찾는 과정에서 B to C 간선을 통해 1씩 유량을 흘려보낼 수 있기에, DFS 과정에서 경로를 찾기 위한 탐색 과정은 f번까지 가능할 수 있다고 본다.
-* DFS을 통해 **Ford-Fulkerson의 시간복잡도는 O((V+E)f)** 임을 알 수 있다.
-<img width="900" alt="two-1" src="https://user-images.githubusercontent.com/68879690/165863503-6d3d87ee-a7be-49b7-96b7-75ce9a3943bb.png">
+* DFS을 통해 **Ford-Fulkerson의 시간복잡도는 O((V+E)F)** 임을 알 수 있다.
+<img width="900" alt="two" src="https://user-images.githubusercontent.com/68879690/165818668-f32bc28d-5501-40d1-9bce-ea767dfc6957.PNG">
 
 
 * DFS로 탐색했을 때, 엄청나게 많은 연산 횟수가 도출이 되었다. 이를 해결하기 위해 **BFS(너비 우선 탐색)** 방식을 사용하는 **Edmonds-Karp Algorithm** 을 사용한다.
     - 처음엔 DFS나 BFS나 큰 차이는 없을테지만, BFS는 정점을 기준으로 가장 빠른 증가 경로(Augmenting path)를 찾을 수 있다.
-    - 위 그림과 같은 상황에서 BFS을 적용하면, 2번이면 탐색이 끝난다.
-    - 시간 복잡도도 O((VE)<sup>2</sup>)로 나타나 DFS로 탐색을 진행했을 때 보다 감소함을 알 수 있다.
-
-### 정리
-- Ford-Fulkerson Algorithm은 최대 유량 문제를 따르는 알고리즘으로, DFS 방식으로 탐색을 진행한다.
-- 상황에 따라 효율적인 알고리즘이 될 수 있지만, 매우 비효율적인 알고리즘이 될 수도 있다.
-- 최종적으로 최대의 유량을 유량과 용량을 조사할 때 간선 및 역간선을 적절히 사용하여 경로 탐색을 진행한다.
